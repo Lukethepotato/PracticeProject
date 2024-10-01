@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://m55l6q22eoei"]
+
+[ext_resource type="Script" path="res://PlayerScipt.gd" id="1_ijvpb"]
+[ext_resource type="Texture2D" uid="uid://ce5v5qhvauu7b" path="res://art/ScreenAHH.png" id="2_7js0e"]
+[ext_resource type="Texture2D" uid="uid://c7x2b8yaaiqlm" path="res://art/okCH3dEwpWAiniYFOMIq9RfjYuBNBAtIUA6zEL~tplv-photomode-zoomcover_480_480.jpeg" id="3_8k3ff"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4r6hi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7js0e")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8k3ff")
+}],
+"loop": true,
+"name": &"walk_default",
+"speed": 5.0
+}]
+
+[node name="PlayerNode" type="Area2D"]
+script = ExtResource("1_ijvpb")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4r6hi")
+animation = &"up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
